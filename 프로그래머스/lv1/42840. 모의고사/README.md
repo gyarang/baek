@@ -1,10 +1,10 @@
 # [level 1] 모의고사 - 42840 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42840) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42840?language=go) 
 
 ### 성능 요약
 
-메모리: 29 MB, 시간: 8.59 ms
+메모리: 4.38 MB, 시간: 0.28 ms
 
 ### 구분
 
