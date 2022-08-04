@@ -1,6 +1,4 @@
-var cache [10000000]bool
 var checked map[int]bool
-var maxChecked = 0
 
 func remove(s []int, index int) []int {
 	newSlice := make([]int, len(s)-1)
@@ -16,29 +14,21 @@ func remove(s []int, index int) []int {
 	return newSlice
 }
 
-func Eratosthenes(n int) bool {
+func BruteForcePrime(n int) bool {
 	if n < 2 {
 		return false
 	}
-
-	if n < maxChecked {
-		return cache[n]
-	}
-	maxChecked = n
-
 	for i := 2; i*i <= n; i++ {
-		if cache[i] {
-			for j := i * i; j <= n; j += i {
-				cache[j] = false
-			}
+		if n%i == 0 {
+			return false
 		}
 	}
-
-	return cache[n]
+	return true
 }
 
+
 func dfs(res int, nums []int) {
-	checked[res] = Eratosthenes(res)
+	checked[res] = BruteForcePrime(res)
 
 	for i, v := range nums {
 		newRes := res * 10 + v
@@ -50,10 +40,6 @@ func dfs(res int, nums []int) {
 }
 
 func solution(numbers string) int {
-	for i := range cache {
-		cache[i] = true
-	}
-
 	checked = make(map[int]bool)
 
 	nums := make([]int, len(numbers))
@@ -63,7 +49,7 @@ func solution(numbers string) int {
 
 	dfs(0, nums)
 	cnt := 0
-	
+
 	for _, isPrime := range checked {
 		if isPrime {
 			cnt++
