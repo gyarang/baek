@@ -29,11 +29,12 @@ func main() {
 	for i := 0; i < cnt; i++ {
 		var input string
 		fmt.Fscanln(reader, &input)
-		if num, ok := byName[input]; ok {
-			fmt.Fprintln(writer, num + 1)
+		if input[0] >= 'A' && input[0] <= 'Z' {
+			fmt.Fprintln(writer, byName[input] + 1)
+			
 		} else {
-			num, _ = strconv.Atoi(input)
-			fmt.Fprintln(writer, pokemons[num - 1])
+			num, _ := strconv.Atoi(input)
+			fmt.Fprintln(writer, pokemons[num - 1])			
 		}
 	}
 }
